@@ -6,14 +6,11 @@
 - Use the `useState` hook to create state variables
 - Create event handler callbacks that manipulate `state`
 - Trigger re-renders by setting state
-- Discuss some "gotchas" of working with `useState`: async code and closures
 
 ### Deliverables
 
-- Complete ProjectListItem component
-- Complete ProjectList component
 - Toggle Dark Mode button text on click
-- Add a 'like' button to each project card
+- Add a 'clap' button to each project card
 - Filter by project name
 
 ### Resources
