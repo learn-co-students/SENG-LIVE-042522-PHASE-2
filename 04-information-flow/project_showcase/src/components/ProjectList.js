@@ -8,9 +8,9 @@ const ProjectList = ({ projects }) => {
     return project.name.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
-  const projectListItems = searchResults.map((project) => {
-    return <ProjectListItem key={project.id} project={project} />;
-  });
+  const projectListItems = searchResults.map((project) => (
+    <ProjectListItem key={project.id} {...project} />
+  ));
 
   const handleOnChange = (e) => setSearchQuery(e.target.value);
 
@@ -31,6 +31,6 @@ const ProjectList = ({ projects }) => {
       <ul className="cards">{projectListItems}</ul>
     </section>
   );
-}
+};
 
 export default ProjectList;
