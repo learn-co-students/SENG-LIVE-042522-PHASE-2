@@ -3,7 +3,7 @@ const ProjectListItem = ({ id, about, image, link, name, phase }) => {
     <li className="card">
       <figure className="image">
         <img src={image} alt={name} />
-        <button className="claps">👏{clapCount}</button>
+        <button className="claps">👏{0}</button>
       </figure>
 
       <section className="details">
