@@ -17,7 +17,7 @@ const ProjectList = ({ projects }) => {
   return (
     <section>
       <h2>Projects</h2>
-
+      {/* <h1>Count: {count}</h1> */}
       <div className="filter">
         <button>All</button>
         <button>Phase 5</button>

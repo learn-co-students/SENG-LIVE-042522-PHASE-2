@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
 
-const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+const Header = ({isDarkMode, onToggleDarkMode}) => {
 
-  const handleClick = () => setIsDarkMode(!isDarkMode);
+  const handleClick = () => onToggleDarkMode();
 
   const buttonTextContent = isDarkMode ? "Light Mode" : "Dark Mode";
 
@@ -15,6 +14,7 @@ const Header = () => {
         Project Showcase
       </h1>
       <button onClick={handleClick}>{buttonTextContent}</button>
+      {/* <input type="number" onChange={(e) => handleCount(e.target.value)}/> */}
     </header>
   );
 };
