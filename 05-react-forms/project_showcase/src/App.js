@@ -15,10 +15,19 @@ const App = () => {
 
   const onToggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
+
+  // we need to add the new project to our list of projects 
+  const onAddProject = (newProject) => {
+
+    // how do i add the new project to the list of projects 
+    // what is projects? an array 
+    setProjects([...projects, newProject])
+  }
+
   return (
     <div className={isDarkMode ? "App" : "App light"}>
       <Header isDarkMode={isDarkMode} onToggleDarkMode={onToggleDarkMode} />
-      <ProjectForm />
+      <ProjectForm onAddProject={onAddProject}/>
       <button onClick={handleClick}>Load Projects</button>
       <ProjectList projects={projects} />
     </div>
