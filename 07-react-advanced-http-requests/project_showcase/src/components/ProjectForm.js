@@ -1,3 +1,10 @@
+// Controlled forms 
+
+// we need to control the form fields using state and setting a value property to each input field. value={state}
+// the way that we are going to update the value of state so it reflects the interctions our user is making with the form is through our onChange event
+
+
+
 import { useState } from "react";
 
 const ProjectForm = ({ onAddProject }) => {
@@ -10,6 +17,9 @@ const ProjectForm = ({ onAddProject }) => {
   });
 
   const handleChange = (e) => {
+
+    // const name = e.target.name
+    // const value = e.target.value
     const { name, value } = e.target;
     setFormData((formData) => ({ ...formData, [name]: value }));
   };

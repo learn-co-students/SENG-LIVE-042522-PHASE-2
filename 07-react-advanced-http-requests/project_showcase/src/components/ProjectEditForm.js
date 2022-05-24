@@ -1,6 +1,12 @@
+// To update: after the form has been submitted 
+
+// 1. Get the value entered by the user: formData state 
+// 2. Deal with the server: send a PATCH request with fetch: I need to provide with the PATCH request: id, method, header, and body
+// 3. Dealing with client side: Update our projects state to reflect the newly updated project 
+
 import React, { useState, useEffect } from "react";
 
-const ProjectEditForm = ({ projectId, completeEditing }) => {
+const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
   const [formData, setFormData] = useState({
     name: "",
     about: "",
@@ -15,7 +21,7 @@ const ProjectEditForm = ({ projectId, completeEditing }) => {
     fetch(`http://localhost:4000/projects/${projectId}`)
       .then((res) => res.json())
       .then((project) => setFormData(project));
-  }, []);
+  }, [projectId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,6 +30,20 @@ const ProjectEditForm = ({ projectId, completeEditing }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    fetch(`http://localhost:4000/projects/${projectId}`, {
+      method: "PATCH", 
+      headers: {
+        "Content-Type": 'application/json',
+        "Accepts": 'application/json'
+      }, 
+      body: JSON.stringify(formData)
+    })
+    .then(resp => resp.json())
+    .then(project => {
+      onUpdateProject(project)
+    })
+
+
     // Add code here
     completeEditing();
   }
