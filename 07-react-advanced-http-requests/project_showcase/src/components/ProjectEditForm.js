@@ -9,7 +9,7 @@ const ProjectEditForm = ({ projectId, completeEditing }) => {
     image: "",
   });
 
-  const { name, about, phase, link, image } = formState;
+  const { name, about, phase, link, image } = formData;
 
   useEffect(() => {
     fetch(`http://localhost:4000/projects/${projectId}`)
