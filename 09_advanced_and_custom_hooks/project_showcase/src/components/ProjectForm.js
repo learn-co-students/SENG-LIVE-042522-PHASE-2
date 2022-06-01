@@ -1,18 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useForm } from "../hooks/useForm";
 
 const ProjectForm = ({ onAddProject }) => {
-  const [formData, setFormData] = useState({
+  const initialState = {
     name: "",
     about: "",
     phase: "",
     link: "",
     image: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((formData) => ({ ...formData, [name]: value }));
   };
+
+  const { formData, handleChange, reset } = useForm(initialState);
+
+  const nameInputRef = useRef();
+  // console.log(nameInputRef.current)
+
+  useEffect(() => {
+    nameInputRef.current.focus();
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,13 +34,7 @@ const ProjectForm = ({ onAddProject }) => {
       .then((resp) => resp.json())
       .then((project) => {
         onAddProject(project);
-        setFormData({
-          name: "",
-          about: "",
-          phase: "",
-          link: "",
-          image: "",
-        });
+        reset();
       });
   };
 
@@ -51,6 +50,7 @@ const ProjectForm = ({ onAddProject }) => {
           name="name"
           onChange={handleChange}
           value={formData.name}
+          ref={nameInputRef}
         />
 
         <label htmlFor="about">About</label>
